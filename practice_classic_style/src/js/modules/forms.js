@@ -1,13 +1,10 @@
-const forms = () => {
+import checkNumInputs from './checkNumInputs';
+const forms = (state) => {
 	const form = document.querySelectorAll('form'),
 		inputs = document.querySelectorAll('input'),
-		phoneInputs = document.querySelectorAll('input[name="user_phone"]');
+		window = document.querySelectorAll('[data-modal]');
 
-	phoneInputs.forEach(item => {
-		item.addEventListener('input', () => {
-			item.value = item.value.replace(/\D/, '');
-		});
-	});
+	checkNumInputs('input[name="user_phone"]');
 
 	const message = {
 		loading: 'Загрузка...',
@@ -24,13 +21,30 @@ const forms = () => {
 
 		return await res.text();
 	};
-
+	// очищаем инпуты
 	const clearInputs = () => {
 		inputs.forEach(item => {
 			item.value = '';
 		});
 	};
+	// закрываем модальное окно после отправки формы
+	const closeModal = (time) => {
+		window.forEach(item => {
+			setTimeout(() => {
+				item.style.display = 'none';
+			}, time);
+		});
+	};
 
+	//очищаем state
+	const clearState = () => {
+		for (const key of Object.keys(state)) {
+			delete state[key];
+			console.log('delete');
+		}
+	};
+
+	// навешиваем обработчик на формы
 	form.forEach(item => {
 		item.addEventListener('submit', (e) => {
 			e.preventDefault();
@@ -40,6 +54,11 @@ const forms = () => {
 			item.appendChild(statusMessage);
 
 			const formData = new FormData(item);
+			if (item.getAttribute('data-calc') === 'end') {
+				for (let key in state) {
+					formData.append(key, state[key]);
+				}
+			}
 
 			postData('assets/server.php', formData)
 				.then(res => {
@@ -52,6 +71,8 @@ const forms = () => {
 					setTimeout(() => {
 						statusMessage.remove();
 					}, 5000);
+					closeModal(5000);
+					clearState();
 				});
 		});
 	});
