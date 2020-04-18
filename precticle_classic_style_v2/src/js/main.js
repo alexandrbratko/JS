@@ -4,6 +4,8 @@ import forms from './modules/forms';
 import mask from './modules/mask';
 import checkTextInput from './modules/checkTextInput';
 import showMoreStyle from './modules/showMoreStyle';
+import calc from './modules/calc';
+import filter from './modules/filter';
 
 window.document.addEventListener('DOMContentLoaded', function () {
 	'use strict';
@@ -22,4 +24,7 @@ window.document.addEventListener('DOMContentLoaded', function () {
 
 	showMoreStyle('.button-styles', '#styles .row');
 
+	calc('#size', '#material', '#options', '.promocode', '.calc-price');
+
+	filter();
 });
