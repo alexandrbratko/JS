@@ -1,6 +1,9 @@
 import modals from './modules/modals';
 import sliders from './modules/sliders';
 import forms from './modules/forms';
+import mask from './modules/mask';
+import checkTextInput from './modules/checkTextInput';
+import showMoreStyle from './modules/showMoreStyle';
 
 window.document.addEventListener('DOMContentLoaded', function () {
 	'use strict';
@@ -11,4 +14,12 @@ window.document.addEventListener('DOMContentLoaded', function () {
 	sliders('.main-slider-item', 'vertical');
 
 	forms();
+
+	mask('[name="phone"]');
+
+	checkTextInput('[name="name"]');
+	checkTextInput('[name="message"]');
+
+	showMoreStyle('.button-styles', '#styles .row');
+
 });

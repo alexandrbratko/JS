@@ -1,11 +1,12 @@
-// import checkNumInputs from './checkNumInputs';
+import {
+	postData
+} from '../sevices/request';
+
 const forms = () => {
 	const form = document.querySelectorAll('form'),
 		inputs = document.querySelectorAll('input'),
 		window = document.querySelectorAll('[data-modal]'),
 		upload = document.querySelectorAll('[name="upload"]');
-
-	// checkNumInputs('input[name="user_phone"]');
 
 	const message = {
 		loading: 'Загрузка...',
@@ -16,14 +17,6 @@ const forms = () => {
 		fail: 'assets/img/fail.png'
 	};
 
-	const postData = async (url, data) => {
-		let res = await fetch(url, {
-			method: "POST",
-			body: data
-		});
-
-		return await res.text();
-	};
 	// очищаем инпуты
 	const clearInputs = () => {
 		inputs.forEach(item => {
