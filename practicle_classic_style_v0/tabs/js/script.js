@@ -8,8 +8,8 @@ window.addEventListener("DOMContentLoaded", function () {
 	// Запускаем функцию что-бы скрыть все элементы, но при этом в аргумент функции передаем значения что-бы потом оставить 1 там видимым
 	function hideTabContent(a) {
 		for (let i = a; i < tabContent.length; i++) {
-			tabContent[i].classList.remove('show');
-			tabContent[i].classList.add('hide');
+			tabContent[i].removeClass('show');
+			tabContent[i].addClass('hide');
 		}
 	}
 	hideTabContent(1);

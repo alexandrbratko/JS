@@ -19,7 +19,7 @@ const modals = () => {
 				// показываем модальное окно и скрываем скролл
 				modal.style.display = 'block';
 				document.body.style.overflow = 'hidden';
-				document.body.style.style.marginRight = `${scroll}px`;
+				document.body.style.marginRight = `${scroll}px`;
 
 			});
 		});
@@ -32,7 +32,7 @@ const modals = () => {
 			});
 			modal.style.display = 'none';
 			document.body.style.overflow = '';
-			document.body.style.style.marginRight = `0px`;
+			document.body.style.marginRight = `0px`;
 
 		});
 
@@ -47,7 +47,7 @@ const modals = () => {
 
 				modal.style.display = 'none';
 				document.body.style.overflow = '';
-				document.body.style.style.marginRight = `0px`;
+				document.body.style.marginRight = `0px`;
 
 			}
 		});
